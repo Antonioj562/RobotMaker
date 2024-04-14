@@ -7,12 +7,12 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="">
+    <div className="appContainer">
       <img className='factoryImg' src={factory}/>
       <h1>BotCreator</h1>
 
-      <h4>Explore this bot creator and see how the bots are able to be displayed to you.</h4>
-      <h4>The ability of adding your own bots to the ranks.</h4>
+      <h3>Explore this bot creator and see how the bots are able to be displayed to you.</h3>
+      <h3>The ability of adding your own bots to the ranks.</h3>
     </div>
   )
 }

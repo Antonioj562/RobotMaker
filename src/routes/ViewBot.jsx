@@ -1,21 +1,35 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import '../styles/card.css'
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { supabase } from "../client";
+import '../styles/viewbot.css'
+import Card from '../components/Card.jsx'
 
+const ViewBot = () =>  {
+    let {BotId} = useParams()
+    const [posts, setPosts] = useState([]);
 
-const ViewBot = (props) =>  {
-    let { BotId } = useParams();
+    useEffect(() => {
+        const fetchPosts = async () => {
+            const {data} = await supabase
+            .from('Posts')
+            .select("*")
+            .eq('BotId', BotId)
+            setPosts(data[0])
+            console.log(data)
+        }
+        fetchPosts();
+    }, []);
 
     return (
-        <div className="Card">
-            <h2 className="name">{"Name : " + props.BotName}</h2>
-            <h3 className="color">{"Color : " + props.BotColor}</h3>
-            <h3 className="purpose">{props.BotsPurpose}</h3>
+        <div className="ViewContainer">
 
-            <ul className="">
-                <Link to="/ViewBot/" element={<ViewBot p={props}/>}>View Bot</Link>
-            </ul>
-            <button>Future Delete Button</button>
+            <Card key={posts && posts.BotId} 
+                BotId={posts && posts.BotId} 
+                BotName={posts && posts.BotName} 
+                BotColor={posts && posts.BotColor} 
+                BotPurpose={posts && posts.BotPurpose}/>
         </div>
     );
 };

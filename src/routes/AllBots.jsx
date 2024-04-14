@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom"
 import { supabase } from "../client";
 import { useState, useEffect } from "react";
 import Card from '../components/Card.jsx'
+import '../styles/allbots.css'
 
 const AllBots = (props) => {
     const [posts, setPosts] = useState([]);
@@ -18,9 +18,9 @@ const AllBots = (props) => {
     }, [props]);
 
     return (
-        <div>
+        <div className="AllBotsContainer">
             <h2>Bots Rise!</h2>     
-            <div>
+            <div className="cardItem">
                 {
                     posts && posts.length > 0 ?
                     posts.map((post) => 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../client";
 import factory from '../../assets/factory.png'
-
+import '../styles/createbot.css'
 
 const CreateBot = () => {
     const [post, setPost] = useState({BotName: "Bob", BotColor: "Gray", BotPurpose: "New Bot" })
@@ -33,7 +33,7 @@ const CreateBot = () => {
     return (
         <div className="createContainer">
             <h1>Creating....</h1>
-            <img className="botFactory" src={factory}/>
+            <img className="factoryImg" src={factory}/>
             <form>
                 <label>Bot - Name</label> <br />
                 <input type="text" id="botName" name="BotName" onChange={handleChange} /><br />
@@ -44,9 +44,12 @@ const CreateBot = () => {
                 <br/>
 
                 <label>Bot -- Purpose</label><br />
-                <input type="text"  id="Purpose" name="BotPurpose" onChange={handleChange}>
-                </input>
-                <br/>
+                <select id="Purpose" name="BotPurpose" onChange={handleChange} value={post.BotPurpose}>
+                    <option value="Programmer">Programmer</option>
+                    <option value="Judgment Day">Judgment Day</option>
+                    <option value="Pass Butter">Pass Butter</option>
+                    <option value="NewBot">New</option>
+                </select>
                 <input type="submit" value="Submit" onClick={createBot} />
             </form>
         </div>

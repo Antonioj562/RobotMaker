@@ -1,14 +1,15 @@
-.appContainer {
+.ViewContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    }
+    height: 100vh; 
+}
 
-.factoryImg {
-    border-radius: 40px;
-    width: 400px;
-    height: auto;
+.ViewContainer h1 {
     margin-bottom: 20px;
-    }
+}
+
+.ViewContainer button {
+    margin-top: 20px;
+}

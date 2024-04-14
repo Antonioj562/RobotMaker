@@ -4,7 +4,7 @@ Submitted by: **Antonio Loyola**
 
 This web app: **Robot creator to save information for your Robot's name, color, and a purpose for your bot**
 
-Time spent: **12** hours spent in total
+Time spent: **19** hours spent in total
 
 ## Required Features
 
@@ -13,9 +13,9 @@ The following **required** functionality is completed:
 - [x] **A create form allows users to add new cremates**
 - [x] **Users can name the crewmate and set the crewmate's attributes by clicking on one of several values**
 - [x] **The site displays a summary page of all the user's added crewmates**
-- [ ] **A previously created crewmate can be updated from the crewmate list**
-- [ ] **A previously created crewmate can be deleted from the crewmate list**
-- [ ] **Each crewmate has a direct, unique link to an info page about them**
+- [x] **A previously created crewmate can be updated from the crewmate list**
+- [x] **A previously created crewmate can be deleted from the crewmate list**
+- [x] **Each crewmate has a direct, unique link to an info page about them**
 
 The following **optional** features are implemented:
 
@@ -31,18 +31,21 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://imgur.com/a/WPu52Hf' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-<!-- Replace this with whatever GIF tool you used! -->
+https://imgur.com/a/WPu52Hf
+
 GIF created with ...  
 <!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
+
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+Strugging work with the data base but I did manage to create and update. I'm attempting to use the extenstion to continue to solve this.
+After hours of frustration and with no avil with chatgpt I continued to ask my friend and he helped me debug my code for hours. It seemed that when I was trying to solve the intial router change with the unique id. I had the minconception of using layout as technical a navbar. Which all together that wasn't how it was supposed to be redone. He helped me through setting up my routes more effectively with numerous bugs occuring along the way while attempting to fix the detail page. After he helped me figure out the routes for the next day I retraced my steps at what he showed me to finish the update and delete portions.
 
 ## License
 

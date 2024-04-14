@@ -1,14 +1,18 @@
-.appContainer {
+.createContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    }
+}
+
+.createContainer form {
+    margin-top: 20px;
+}
 
 .factoryImg {
     border-radius: 40px;
     width: 400px;
     height: auto;
     margin-bottom: 20px;
-    }
+}

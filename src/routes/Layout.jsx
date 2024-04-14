@@ -1,9 +1,9 @@
 import { Outlet, Link } from "react-router-dom"
 import '../styles/navbar.css'
-import CreateBot from "../routes/CreateBot"
+import CreateBot from "./CreateBot"
 import AllBots from "./AllBots"
 
-const Navbar = () => {
+const layout = () => {
     return (
         <div>
             <nav>
@@ -28,4 +28,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default layout;

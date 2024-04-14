@@ -1,59 +1,81 @@
-import { useState } from "react";
+import React from 'react'
+import '../styles/card.css'
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { supabase } from "../client";
 import factory from '../../assets/factory.png'
+import '../styles/updatebot.css'
 
-const UpdateBot = (p) => {
-    const [post, setPost] = useState({BotName: "Bob", BotColor: "Gray", BotPurpose: "New Bot" })
+const UpdateBot = () =>  {
+    let {BotId} = useParams()
+    const [posts, setPosts] = useState();
 
-    const updateBot = async (event) => {
-        event.preventDefault();
+    useEffect(() => {
+        const fetchPosts = async () => {
+            const {data} = await supabase
+            .from('Posts')
+            .select("*")
+            .eq('BotId', BotId)
+            setPosts(data[0])
+            console.log(data)
+        }
+        fetchPosts();
+    }, []);
+
+    const updateBot = async () => {
         try {
+            let updatedBotName = document.getElementById('botName').value;
+            let updatedBotColor = document.getElementById('BotColor').value;
+            let updatedBotPurpose = document.getElementById('Purpose').value;
+
+            if (!updatedBotName) updatedBotName = posts.BotName;
+            if (!updatedBotColor) updatedBotColor = posts.BotColor;
+            if (!updatedBotPurpose) updatedBotPurpose = posts.BotPurpose;
+
+            console.log('Updating...')
             await supabase
                 .from('Posts')
-                .update({BotName: post.BotName, BotColor: post.BotColor, BotPurpose: post.BotPurpose})
-                .eq('BotId', post.BotId);
+                .update({
+                    BotName: updatedBotName,
+                    BotColor: updatedBotColor,
+                    BotPurpose: updatedBotPurpose
+                    })
+                .eq('BotId', BotId);
+            console.log(posts)
             console.log('Bot updated successfully');
         } catch (error) {
             console.error('Error updating bot:', error.message);
         }
-    }
-
-    const handleChange = (event) => {
-        const {name, value} = event.target;
-        setPost( (prev) => {
-            return {
-                ...prev,
-                [name]:value,
-            }
-        })
-    }
+    };
 
     return (
-        <>
-            <div className="createContainer">
+        <div className="updateContainer">
                 <h1>Updating....</h1>
-                <img className="botFactory" src={factory}/>
-                <h3>Current Name: {p.BotName}</h3>
-                <h3>Current Color: {p.BotColor}</h3>
-                <h3>Current Prupose: {p.BotPurpos}</h3>
+                <img className="factoryImg" src={factory} alt="Factory" />
+                <h3>Current Name: {posts && posts.BotName}</h3>
+                <h3>Current Color: {posts &&posts.BotColor}</h3>
+                <h3>Current Purpose: {posts && posts.BotPurpose}</h3>
                 <form>
                     <label>Bot - Name</label> <br />
-                    <input type="text" id="botName" name="BotName" onChange={handleChange} /><br />
+                    <input type="text" id="botName" name="BotName" /><br />
                     <br/>
 
                     <label>Bot - Color</label><br />
-                    <input type="text" id="BotColor" name="BotColor" onChange={handleChange} /><br />
+                    <input type="text" id="BotColor" name="BotColor" /><br />
                     <br/>
 
                     <label>Bot -- Purpose</label><br />
-                    <input type="text"  id="Purpose" name="BotPurpose" onChange={handleChange}>
-                    </input>
-                    <br/>
-                    <input type="submit" value="Submit" onClick={updateBot} />
+                <select id="Purpose" name="BotPurpose" defaultValue={posts && posts.BotPurpose}>
+                    <option value="Programmer">Programmer</option>
+                    <option value="Judgment Day">Judgment Day</option>
+                    <option value="Pass Butter">Pass Butter</option>
+                    <option value="NewBot">New</option>
+                </select>
+                <br/>
+                    <input type="button" value="Submit" onClick={updateBot}  />
                 </form>
             </div>
-        </>
-    )
-}
+    );
+};
 
-export default UpdateBot
+export default UpdateBot;

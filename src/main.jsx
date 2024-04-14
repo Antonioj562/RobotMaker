@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
-import Navbar from './routes/Navbar.jsx'
+import Layout from './routes/Layout.jsx'
 import CreateBot from './routes/CreateBot.jsx'
 import AllBots from './routes/AllBots.jsx'
 import UpdateBot from './routes/UpdateBot.jsx'
 import ViewBot from './routes/ViewBot.jsx'
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,11 +16,8 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Navbar />}>
+        <Route path='/' element={<Layout />}>
           <Route index={true} element={<App />}/>
-        </Route>
-
-        <Route path='/' element={<Navbar />}>
           <Route
             path="*"
             element={
@@ -31,23 +29,14 @@ root.render(
               </main>
               }
             />
+        <Route index={false} path="/CreateBot/" element={<CreateBot />}/>
+        <Route index={false} path="/AllBots" element={<AllBots />}/>
+        <Route index={false} path="/ViewBot/:BotId" element={<ViewBot />}/>
+          <Route index={false} path="/UpdateBot/:BotId" element={<UpdateBot />}/>
         </Route>
 
-        <Route path='/' element={<Navbar />}>
-          <Route index={false} path="/CreateBot/" element={<CreateBot />}/>
-        </Route>
-
-        <Route path='/' element={<Navbar />}>
-            <Route index={false} path="/AllBots/" element={<AllBots />}/>
-        </Route>
-
-        <Route path='/' element={<Navbar />}>
-          <Route index={false} path="/UpdateBot/" element={<UpdateBot />}/>
-        </Route>
-
-        <Route path='/' element={<Navbar />}>
-          <Route index={false} path="/AllBots/:BotId" element={<ViewBot />}/>
-        </Route>
+      
+        
 
       </Routes>
     </BrowserRouter>
