@@ -2,7 +2,7 @@
 
 Submitted by: **Antonio Loyola**
 
-This web app: **Robot creator to save information for your Robot's name, color, and a purpose for your bot**
+This web app: **Robot creator to save information for your Robot's name, color, and a purpose for your bot. This uses Supabase for the database and is able to store 3 attributes for a robot**
 
 Time spent: **19** hours spent in total
 
